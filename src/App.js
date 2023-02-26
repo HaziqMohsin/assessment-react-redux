@@ -1,55 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from "react";
+// import { Counter } from "./features/counter/Counter";
+import Map from "./features/maps/Map";
+import AutocompleteForm from "./features/autocompleteform/AutocompleteForm";
+import Location from "./features/location/Location";
+import "./App.css";
+import { LoadScript } from "@react-google-maps/api";
+import { Container, Grid } from "@mui/material";
+import { LIBRARIES } from "./utils/mapLibraries";
 
 function App() {
+  const librariez = LIBRARIES;
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
+        {/* <Container fixed sx={{ padding: "10px"}}>
+          <LoadScript
+            googleMapsApiKey={"AIzaSyBqFtGr8WdrxaqjrcLT8RkNJj6tPjmLvdA"}
+            libraries={librariez}
           >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
+            <AutocompleteForm />
+            <Map />
+            <Location />
+          </LoadScript>
+        </Container> */}
+        <LoadScript
+          googleMapsApiKey={"AIzaSyBqFtGr8WdrxaqjrcLT8RkNJj6tPjmLvdA"}
+          libraries={librariez}
+        >
+          <Container fixed sx={{ padding: "10px" }}>
+            <Grid container spacing={2}>
+              <Grid item xs={6}>
+                <AutocompleteForm />
+                <Location />
+              </Grid>
+              <Grid item xs={6}>
+                <Map />
+              </Grid>
+            </Grid>
+          </Container>
+        </LoadScript>
       </header>
     </div>
   );
