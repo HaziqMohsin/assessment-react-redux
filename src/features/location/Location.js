@@ -33,7 +33,9 @@ const Location = () => {
                   : "inherit",
             }}
           >
-            <Button onClick={() => handleDelete(index)}>x</Button>
+            <Button onClick={() => handleDelete(index)} sx={{ color: "red" }}>
+              x
+            </Button>
             <ListItemText primary={location.name} />
           </ListItem>
         ))}

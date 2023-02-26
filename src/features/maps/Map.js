@@ -13,8 +13,8 @@ const Map = () => {
   };
 
   const center = {
-    lat: selectedLat || 4.1721504,
-    lng: selectedLng || 102.067192,
+    lat: selectedLat || 3.1472732,
+    lng: selectedLng || 101.6995352,
   };
 
   const options = {
@@ -23,7 +23,7 @@ const Map = () => {
     fullscreenControl: false,
     navigationControl: false,
     scaleControl: false,
-    zoomControl: false,
+    zoomControl: true,
   };
 
   const onLoad = (marker) => {
@@ -31,18 +31,16 @@ const Map = () => {
   };
 
   const position = {
-    lat: selectedLat || 4.1721504,
-    lng: selectedLng || 102.067192,
+    lat: selectedLat || 3.1472732,
+    lng: selectedLng || 101.6995352,
   };
-
-  console.log(position);
 
   return (
     <div>
       <GoogleMap
         id="searchbox-example"
         mapContainerStyle={mapContainerStyle}
-        zoom={10}
+        zoom={12}
         center={center}
         options={options}
       >

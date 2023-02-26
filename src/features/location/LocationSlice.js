@@ -21,18 +21,6 @@ export const removeSelectedLocation = createAsyncThunk(
     const updateSelectedLocation = state.locations.listSelectedLocations.filter(
       (loc, index) => index !== locationIndex
     );
-
-    console.log(updateSelectedLocation);
-    console.log(locationIndex);
-    const getLastArray = updateSelectedLocation.at(-1);
-    if (updateSelectedLocation.length > 0) {
-      await dispatch(
-        setSelectedLatLng({ lat: getLastArray.lat, lng: getLastArray.lng })
-      );
-    } else {
-      console.log("here");
-      await dispatch(setSelectedLatLng({ lat: null, lng: null }));
-    }
     return updateSelectedLocation;
   }
 );
@@ -53,6 +41,16 @@ export const locationsSlice = createSlice({
       })
       .addCase(removeSelectedLocation.fulfilled, (state, action) => {
         state.listSelectedLocations = action.payload;
+        const getLastArray = action.payload.at(-1);
+
+        if (getLastArray === undefined) {
+          state.selectedLat = null;
+          state.selectedLng = null;
+        } else {
+          const { lat, lng } = getLastArray;
+          state.selectedLat = lat;
+          state.selectedLng = lng;
+        }
       });
   },
 });
